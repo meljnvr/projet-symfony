@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.title) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.price) }}
+
+    {{ form_row(form.save, { 'label': 'Submit' }) }}
+{{ form_end(form) }}
+
+
+{% endblock %}

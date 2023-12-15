@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+    </head>
+    <block>
+    <nav>
+        {% block nav %}
+            {% if app.user is not null %}
+                <a href="{{ path('app_logout')}}">{{ 'Logout'|trans }}</a>
+            {% endif %}
+        {% endblock %}
+    </nav>
+    <body>
+        {% block body %}{% endblock %}
+        {% block messages %}
+            {% for message in app.flashes('notice') %}
+                <div class="flash-notice">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endfor %}
+        {% endblock %}
+    </body>
+</html>
+

@@ -48,7 +48,7 @@ class AdController extends AbstractController
         ]);
     }
 
-    #[Route('/ad', name: 'app_ad')]
+    #[Route('/', name: 'app_ad')]
     public function index(AdRepository $adRepository): Response
     {
         return $this->render('ad/index.html.twig', [
@@ -64,7 +64,7 @@ class AdController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'ad_edit', methods: ['GET', 'POST'])]
+    #[Route('/ad/{id}/edit', name: 'ad_edit', methods: ['GET', 'POST'])]
     #[Security("is_granted('AD_EDIT', ad)")]
     public function edit(Request $request, Ad $ad, AdRepository $adRepository): Response
     {
